@@ -1,0 +1,45 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+
+<!--
+@group Seed Elements
+@element employee-record
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="employee-record">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      div {
+        margin-bottom: 8px;
+      }
+    </style>
+    <div><span>{{user.manager}}</span></div>
+    <paper-input value="{{user.manager}}"></paper-input>
+    <button on-tap="changeManager">Change Manager</button>
+  </template>
+  <script>
+    Polymer({
+      is: 'employee-record',
+      properties: {
+        user: {
+          type: Object,
+          value: function() {
+            return { name: 'Rob', manager: 'Paul' };
+          }
+        }
+      },
+      changeManager: function() {
+        // this.user.manager = 'Fred';
+        // this.notifyPath('user.manager', this.user.manager);
+        // ou
+        this.set('user.manager', 'Frederico');
+        // ou
+        // this.user = { name: 'Rob', manager: 'Fred' };
+      }
+    });
+  </script>
+</dom-module>
